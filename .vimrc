@@ -3,7 +3,7 @@ set backspace=indent,eol,start
 set ruler
 set encoding=utf-8
 set clipboard=unnamed
-set nocompatible
+set autoindent
 filetype plugin indent on
 syntax on
 
