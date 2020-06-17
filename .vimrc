@@ -3,7 +3,8 @@ set backspace=indent,eol,start
 set ruler
 set encoding=utf-8
 set clipboard=unnamed
-set autoindent
+set nocompatible
+" set spell spelllang=en_us
 filetype plugin indent on
 syntax on
 
@@ -17,6 +18,7 @@ Plug 'tpope/vim-commentary'
 Plug 'vim-syntastic/syntastic'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'hashivim/vim-terraform'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 " (Optional)Remove Info(Preview) window
@@ -51,3 +53,5 @@ let g:terraform_fmt_on_save=1
 set rtp+=/usr/local/opt/fzf
 
 
+autocmd FileType python map <buffer> <F9> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
