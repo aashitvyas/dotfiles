@@ -9,6 +9,9 @@ set laststatus=2
 filetype plugin indent on
 syntax on
 
+" highlight search results
+set hlsearch
+
 
 
 call plug#begin('~/.vim/plugged')
@@ -32,6 +35,7 @@ set statusline+=%#warningmsg#
 set statusline+=%{FugitiveStatusline()}
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
