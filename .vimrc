@@ -4,6 +4,7 @@ set ruler
 set encoding=utf-8
 set clipboard=unnamed
 set nocompatible
+set laststatus=2
 " set spell spelllang=en_us
 filetype plugin indent on
 syntax on
@@ -18,7 +19,7 @@ Plug 'tpope/vim-commentary'
 Plug 'vim-syntastic/syntastic'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'hashivim/vim-terraform'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide=/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 " (Optional)Remove Info(Preview) window
@@ -28,6 +29,7 @@ set completeopt-=preview
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 set statusline+=%#warningmsg#
+set statusline+=%{FugitiveStatusline()}
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
