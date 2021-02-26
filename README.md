@@ -1,2 +1,2 @@
-# vim-editor
-Repository for all the vim configuration 
+# dotfiles
+Repository for vim,zsh,git configuration
