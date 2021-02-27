@@ -23,6 +23,7 @@ Plug 'vim-syntastic/syntastic'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'hashivim/vim-terraform'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'junegunn/fzf'
 
 call plug#end()
 " Below are COC installed extensions, for the complete supported list go to -
@@ -218,8 +219,8 @@ autocmd FileType apache setlocal commentstring=#\ %s
 let g:terraform_align=1
 let g:terraform_fmt_on_save=1
 
-"To use fzf in Vim, add the following line to your .vimrc:
-set rtp+=/usr/local/opt/fzf
+""To use fzf in Vim, add the following line to your .vimrc:
+"set rtp+=/usr/local/opt/fzf
 
 
 autocmd FileType python map <buffer> <F9> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>

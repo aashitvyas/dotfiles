@@ -103,8 +103,8 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 export PATH=$PATH:/Users/ashit.vyas/bin:/Users/ashit.vyas/platform.pureweb.io/helpers
-alias cdgit="cd /Users/ashit.vyas/gits"
-alias cdbin="cd /Users/ashit.vyas/bin"
+alias cg="cd /Users/ashit.vyas/gits"
+alias cbin="cd /Users/ashit.vyas/bin"
 alias cdeploy="cd /Users/ashit.vyas/gits/platform.pureweb.io/deployment_prod"
 alias tfapply="terraform apply -auto-approve"
 alias tfinit="terraform init"
@@ -132,9 +132,7 @@ alias sli="sam local invoke"
 alias c="clear"
 alias l="ls -lsrth"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 ### Hide the "user@hostname" info when you're logged in as yourself on local machine
-
 prompt_context() {
   if [[ -n "$SSH_CLIENT" ]]; then
     prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
@@ -143,6 +141,26 @@ prompt_context() {
 
 
 assume-role() { role=${1}; mfa=${2}; eval $(/Users/ashit.vyas/gits/platform.pureweb.io/helpers/awsCreds.py "$role" "$mfa"); }
+
+
+### FZF Functions (https://github.com/junegunn/fzf/wiki/examples#opening-files)
+# Changing Directory
+fd() {
+  local dir
+  dir=$(find ${1:-.} -path '*/\.*' -prune \
+                  -o -type d -print 2> /dev/null | fzf +m) &&
+  cd "$dir"
+}
+
+# fe [FUZZY PATTERN] - Open the selected file with the default editor
+#   - Bypass fuzzy finder if there's only one match (--select-1)
+#   - Exit if there's no match (--exit-0)
+fe() {
+  IFS=$'\n' files=($(fzf-tmux --height 40% --layout=reverse --border --query="$1" --multi --select-1 --exit-0))
+  [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
+}
+
+
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /Users/ashit.vyas/bin/terraform terraform
