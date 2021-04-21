@@ -139,10 +139,13 @@ prompt_context() {
   fi
 }
 
-
+#zsh function
+#
 assume-role() { role=${1}; mfa=${2}; eval $(/Users/ashit.vyas/gits/platform.pureweb.io/helpers/awsCreds.py "$role" "$mfa"); }
-
-
+#SSM Connect takes instance id and region as argument to connect AWS Instance, 
+#To-Do make Port as argument as well with some sensible default
+#Takes third argument as AWS Profile with mfa prompt
+ssmconnect() { instance=$1; region=$2; profile=$3; aws ssm start-session --target "$instance" --document-name AWS-StartPortForwardingSession --parameters portNumber=5900,localPortNumber=3388 --region "$region" --profile "${profile:-su}" 	}
 ### FZF Functions (https://github.com/junegunn/fzf/wiki/examples#opening-files)
 # Changing Directory
 fd() {

@@ -7,6 +7,9 @@ set nocompatible
 set laststatus=2
 filetype plugin indent on
 syntax on
+" Use new regular expression engine ( otherwise TS Syntax highlight won't work
+" )
+set re=0
 
 " highlight search results
 set hlsearch
@@ -24,11 +27,13 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'hashivim/vim-terraform'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf'
+Plug 'quramy/tsuquyomi'
+
 
 call plug#end()
 " Below are COC installed extensions, for the complete supported list go to -
 " https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions#implemented-coc-extensions"
-let g:coc_global_extensions = ['coc-tsserver','coc-prettier','coc-json', 'coc-yaml','coc-python','coc-git','coc-cfn-lint','coc-sh','coc-eslint','coc-prettier']
+let g:coc_global_extensions = ['coc-tsserver','coc-prettier','coc-json', 'coc-yaml','coc-python','coc-git','coc-cfn-lint','coc-sh','coc-eslint','coc-prettier','coc-go']
 
 " TextEdit might fail if hidden is not set.
 set hidden
@@ -232,3 +237,6 @@ hi CocInfoFloat guifg=#050505 guibg=#050505
 hi CocErrorFloat guifg=#050505 guibg=#050505
 hi CocWarningFloat guifg=#050505 guibg=#050505
 hi CocHintFloat guifg=#050505 guibg=#050505
+hi link CocFloating markdown
+
+" let g:go_gopls_enabled = 0
