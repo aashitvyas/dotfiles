@@ -1,13 +1,17 @@
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
 [user]
-	name = Ashit(Ash) Vyas
-	email = aashitvyas@gmail.com
+	name = Ashit Vyas
+	email = aashitvyas@gmail.com 
 [core]
 	excludesfile = /Users/ashit.vyas/.gitignore_global
+	editor = vim
 [commit]
 	template = /Users/ashit.vyas/.stCommitMsg
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[push]
+	default = current
+[pull]
+	rebase = true

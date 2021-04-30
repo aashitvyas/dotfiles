@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
- export PATH=$HOME/bin:/usr/local/bin:$PATH:/usr/local/Cellar/mysql/8.0.19/bin
+ export PATH=$HOME/bin:/usr/local/bin:$PATH:/usr/local/Cellar/mysql/8.0.19/bin:$PATH:/Users/ashit.vyas/go/bin
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/ashit.vyas/.oh-my-zsh"
